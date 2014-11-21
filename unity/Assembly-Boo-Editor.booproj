@@ -75,6 +75,12 @@
      <None Include="Assets\RAIN\Editor\Shaders\AspectRingShader.shader" />
      <None Include="Assets\RAIN\Editor\Shaders\NavMeshColliderShader.shader" />
      <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\ParticleBlend.shader" />
+ <Reference Include="RAIN">
+ <HintPath>D:/Programmation/FuriousCatInteractive/LeRetourD-Abargoch/unity/Assets/RAIN/RAIN.dll</HintPath>
+ </Reference>
+ <Reference Include="RAINEditor">
+ <HintPath>D:/Programmation/FuriousCatInteractive/LeRetourD-Abargoch/unity/Assets/RAIN/Editor/RAINEditor.dll</HintPath>
+ </Reference>
  <Reference Include="NSubstitute">
  <HintPath>D:/Programmation/FuriousCatInteractive/LeRetourD-Abargoch/unity/Assets/UnityTestTools/UnitTesting/Editor/NSubstitute/NSubstitute.dll</HintPath>
  </Reference>
@@ -95,12 +101,6 @@
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>D:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
- </Reference>
- <Reference Include="RAIN">
- <HintPath>D:/Programmation/FuriousCatInteractive/LeRetourD-Abargoch/unity/Assets/RAIN/RAIN.dll</HintPath>
- </Reference>
- <Reference Include="RAINEditor">
- <HintPath>D:/Programmation/FuriousCatInteractive/LeRetourD-Abargoch/unity/Assets/RAIN/Editor/RAINEditor.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
