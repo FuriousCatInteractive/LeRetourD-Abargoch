@@ -39,10 +39,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>D:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>D:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -53,6 +53,7 @@
      <Compile Include="Assets\Fantasy AI Free Edition\Scripts\Player\AICount.cs" />
      <Compile Include="Assets\Fantasy AI Free Edition\Scripts\Player\HealthPotion.cs" />
      <Compile Include="Assets\Fantasy AI Free Edition\Scripts\Player\PlayerController.cs" />
+     <Compile Include="Assets\Fantasy AI Free Edition\Scripts\triger_box_goal.cs" />
      <Compile Include="Assets\UnityTestTools\Assertions\AssertionComponent.cs" />
      <Compile Include="Assets\UnityTestTools\Assertions\AssertionException.cs" />
      <Compile Include="Assets\UnityTestTools\Assertions\Assertions.cs" />
@@ -122,10 +123,13 @@
      <None Include="Assets\RAIN\Editor\Shaders\NavMeshColliderShader.shader" />
      <None Include="Assets\UnityTestTools\Examples\IntegrationTestsFrameworkExamples\AngryBotsTests\Shaders\Fx\ParticleBlend.shader" />
  <Reference Include="Assembly-UnityScript-firstpass">
- <HintPath>D:/Programmation/FuriousCatInteractive/LeRetourD-Abargoch/unity/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
+ <HintPath>C:/Users/Corentin/Documents/aaaa-unity-jv/LeRetourD-Abargoch/unity/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
+ </Reference>
+ <Reference Include="RAINMetaform">
+ <HintPath>C:/Users/Corentin/Documents/aaaa-unity-jv/LeRetourD-Abargoch/unity/Assets/RAIN/RAINMetaform.dll</HintPath>
  </Reference>
  <Reference Include="RAIN">
- <HintPath>D:/Programmation/FuriousCatInteractive/LeRetourD-Abargoch/unity/Assets/RAIN/RAIN.dll</HintPath>
+ <HintPath>C:/Users/Corentin/Documents/aaaa-unity-jv/LeRetourD-Abargoch/unity/Assets/RAIN/RAIN.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
