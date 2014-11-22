@@ -18,6 +18,8 @@ public class DeleteMobDetect : RAINAction
 
 		MonoBehaviour.Destroy(mob);
 
+		ai.WorkingMemory.Clear();
+
         return ActionResult.SUCCESS;
     }
 
