@@ -2,7 +2,8 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Fantasy AI Free Edition\Scripts\AI Scripts\FreeAI.cs">
     <Files>
-      <File FileName="Assets\Fantasy AI Free Edition\Scripts\AI Scripts\FreeAI.cs" Line="119" Column="31" />
+      <File FileName="Assets\Fantasy AI Free Edition\Scripts\AI Scripts\FreeAI.cs" Line="118" Column="65" />
+      <File FileName="Assets\AI\Actions\testAI.cs" Line="23" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
