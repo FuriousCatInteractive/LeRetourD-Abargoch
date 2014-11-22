@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour {
 	private float atime;
 	private bool dealdamage;
 	public int TotalAICount;
+	static public int vieTour;
 	public bool YouWon;
 	private bool w;
 	
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour {
 		
 		w=true;
 		playd=true;
+		vieTour=10;
 	
 	}
 	
@@ -168,6 +170,7 @@ public class PlayerController : MonoBehaviour {
 		GUI.Button(new Rect(0, 30, 300, 26), "Health: "+hpp);
 		}
 		GUI.Button(new Rect(0, 60, 300, 26), "Evil Skellies Left: "+TotalAICount);
+		GUI.Button(new Rect(0, 90, 300, 26), "vie tour : "+vieTour);
 			
 		//YOU WON!
 		if(YouWon){
