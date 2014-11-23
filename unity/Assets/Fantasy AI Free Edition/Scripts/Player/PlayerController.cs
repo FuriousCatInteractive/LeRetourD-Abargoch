@@ -32,6 +32,17 @@ public class PlayerController : MonoBehaviour
 		public Vector3 For;
 		public List<Transform> KillList;
 		public int directionPlayer;
+
+		public GUIStyle barre_comp;
+		public GUIStyle heal_zone;
+		public GUIStyle dmg_zone;
+		public GUIStyle buffatk_zone;
+		public GUIStyle slow_zone;
+
+		public Transform healZonePrefab;
+		public Transform dmgZonePrefab;
+		public Transform buffatkZonePrefab;
+		public Transform slowZonePrefab;
 	
 		// Use this for initialization
 		void Start ()
@@ -103,21 +114,28 @@ public class PlayerController : MonoBehaviour
 								kill = true;	
 						}
 						
-						if (Input.GetKeyUp (KeyCode.V)) {
-								GameObject plane = GameObject.CreatePrimitive (PrimitiveType.Plane);
-								GameObject cube = GameObject.CreatePrimitive (PrimitiveType.Cube);
-								Vector3 posZone = transform.position;
-								if (directionPlayer == 90)
-										posZone.x = posZone.x + 2;
-								else if (directionPlayer == -90)
-										posZone.x = posZone.x - 2;
-								else if (directionPlayer == 0)
-										posZone.z = posZone.z + 2;
-								if (directionPlayer == -180)
-										posZone.z = posZone.z - 2;
-								cube.transform.position = posZone;
-								
+						//Utilisation competences
+						if (Input.GetKeyUp (KeyCode.Z)) {
+							Vector3 posZone = GetPosZone();
+							Transform healZone = (Transform)Instantiate(healZonePrefab, posZone, Quaternion.identity);
 						}
+
+						if (Input.GetKeyUp (KeyCode.X)) {
+							Vector3 posZone = GetPosZone();
+							Transform healZone = (Transform)Instantiate(dmgZonePrefab, posZone, Quaternion.identity);
+						}
+
+						if (Input.GetKeyUp (KeyCode.C)) {
+							Vector3 posZone = GetPosZone();
+							Transform healZone = (Transform)Instantiate(buffatkZonePrefab, posZone, Quaternion.identity);
+						}
+
+						if (Input.GetKeyUp (KeyCode.V)) {
+							Vector3 posZone = GetPosZone();
+							Transform healZone = (Transform)Instantiate(slowZonePrefab, posZone, Quaternion.identity);
+						}
+
+					
 		
 						//LETS DO SOME KILLIN!
 						if (kill) {
@@ -210,6 +228,25 @@ public class PlayerController : MonoBehaviour
 			
 				}
 		}
+
+		private Vector3 GetPosZone (){
+			Vector3 posZone = transform.position;
+			if (directionPlayer == 90){
+				posZone.x = posZone.x + 2;
+			}
+			else if (directionPlayer == -90){
+				posZone.x = posZone.x - 2;
+			}
+			else if (directionPlayer == 0){
+				posZone.z = posZone.z + 2;
+			}
+			if (directionPlayer == -180){
+				posZone.z = posZone.z - 2;
+			}
+		
+		return posZone;
+		}
+		
 		void OnGUI ()
 		{
 				//HEALTH BAR AND AI COUNT
@@ -220,7 +257,14 @@ public class PlayerController : MonoBehaviour
 				}
 				GUI.Button (new Rect (0, 60, 300, 26), "Evil Skellies Left: " + TotalAICount);
 				GUI.Button (new Rect (0, 90, 300, 26), "vie tour : " + vieTour);
-			
+				
+				//Skill bar
+				GUI.Box (new Rect (Screen.width/2 - 178, Screen.height - 91, 345, 91), "", barre_comp);
+				GUI.Box (new Rect (Screen.width/2 - 160, Screen.height - 70, 70, 66), "", heal_zone);
+				GUI.Box (new Rect (Screen.width/2 - 80, Screen.height - 70, 70, 66), "", dmg_zone);
+				GUI.Box (new Rect (Screen.width/2, Screen.height - 70, 70, 66), "", buffatk_zone);
+				GUI.Box (new Rect (Screen.width/2 + 80, Screen.height - 70, 70, 66), "", slow_zone);
+
 				//YOU WON!
 				if (YouWon) {
 						GUI.Box (new Rect (200, 200, 330, 260), "Congratulations!  You have defeated all the Evil Skellies!");
