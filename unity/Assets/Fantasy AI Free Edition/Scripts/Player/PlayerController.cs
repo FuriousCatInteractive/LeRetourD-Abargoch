@@ -5,7 +5,9 @@ using System.Collections.Generic;
 public class PlayerController : MonoBehaviour
 {
 		public float movespeed = 4;
+		public float DefaultDamage = 60;
 		public float Damage = 60;
+		public bool atkBuff = false;
 		public Transform Cam;
 		public float CamHeight = 10;
 		public float CamHeightPushback = 5;
@@ -14,6 +16,7 @@ public class PlayerController : MonoBehaviour
 		public AnimationClip Attack;
 		public AnimationClip die;
 		public float AttackSpeed = 0.7f;
+		public double buffTime = 10;
 		private bool kill;
 		public bool dead;
 		private bool playd;
@@ -23,6 +26,8 @@ public class PlayerController : MonoBehaviour
 		static public int vieTour;
 		public bool YouWon;
 		private bool w;
+		private double buffDelta;
+		private bool lockTime = false;
 	
 		public Vector3 For;
 		public List<Transform> KillList;
@@ -38,6 +43,7 @@ public class PlayerController : MonoBehaviour
 				playd = true;
 				vieTour = 10;
 				directionPlayer = -90;
+				buffDelta = Time.time;
 	
 		}
 	
@@ -46,6 +52,20 @@ public class PlayerController : MonoBehaviour
 		{
 
 				//
+				if(lockTime == false && atkBuff == true) {
+					lockTime = true;
+					buffDelta = Time.time;
+				}
+				
+				if(atkBuff == false) {
+					Damage = DefaultDamage;
+				}
+				else if(Time.time-buffDelta > buffTime && atkBuff == true) {
+					atkBuff = false;
+					lockTime = false;
+				}
+
+				
 
 				//Victory
 				if (w) {
