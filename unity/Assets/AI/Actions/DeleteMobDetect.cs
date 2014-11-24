@@ -14,6 +14,9 @@ public class DeleteMobDetect : RAINAction
 		public override ActionResult Execute (RAIN.Core.AI ai)
 		{
 				GameObject mob = ai.WorkingMemory.GetItem<GameObject> ("detectMob");
+				if(mob != null) {
+					PlayerController.vieTour--;
+				}
 				MonoBehaviour.Destroy (mob);
 				return ActionResult.SUCCESS;
 		}

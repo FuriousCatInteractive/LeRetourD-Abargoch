@@ -14,7 +14,7 @@ public class varSpawn : RAINAction
 
     public override ActionResult Execute(RAIN.Core.AI ai)
     {
-		int timeS = Random.Range (0, 5);
+		int timeS = Random.Range (30, 120);
 		ai.WorkingMemory.SetItem<int> ("varSpawn", timeS);
         return ActionResult.SUCCESS;
     }

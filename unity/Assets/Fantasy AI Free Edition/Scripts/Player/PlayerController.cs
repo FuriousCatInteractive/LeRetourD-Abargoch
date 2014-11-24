@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
 		private bool w;
 		private double buffDelta;
 		private bool lockTime = false;
+		static public bool enaUsePower = true;
 	
 		public Vector3 For;
 		public List<Transform> KillList;
@@ -114,25 +115,27 @@ public class PlayerController : MonoBehaviour
 								kill = true;	
 						}
 						
-						//Utilisation competences
-						if (Input.GetKeyUp (KeyCode.Z)) {
-							Vector3 posZone = GetPosZone();
-							Transform healZone = (Transform)Instantiate(healZonePrefab, posZone, Quaternion.identity);
-						}
+						if(enaUsePower) {
+							//Utilisation competences
+							if (Input.GetKeyUp (KeyCode.Z)) {
+								Vector3 posZone = GetPosZone();
+								Transform healZone = (Transform)Instantiate(healZonePrefab, posZone, Quaternion.identity);
+							}
 
-						if (Input.GetKeyUp (KeyCode.X)) {
-							Vector3 posZone = GetPosZone();
-							Transform healZone = (Transform)Instantiate(dmgZonePrefab, posZone, Quaternion.identity);
-						}
+							if (Input.GetKeyUp (KeyCode.X)) {
+								Vector3 posZone = GetPosZone();
+								Transform healZone = (Transform)Instantiate(dmgZonePrefab, posZone, Quaternion.identity);
+							}
 
-						if (Input.GetKeyUp (KeyCode.C)) {
-							Vector3 posZone = GetPosZone();
-							Transform healZone = (Transform)Instantiate(buffatkZonePrefab, posZone, Quaternion.identity);
-						}
+							if (Input.GetKeyUp (KeyCode.C)) {
+								Vector3 posZone = GetPosZone();
+								Transform healZone = (Transform)Instantiate(buffatkZonePrefab, posZone, Quaternion.identity);
+							}
 
-						if (Input.GetKeyUp (KeyCode.V)) {
-							Vector3 posZone = GetPosZone();
-							Transform healZone = (Transform)Instantiate(slowZonePrefab, posZone, Quaternion.identity);
+							if (Input.GetKeyUp (KeyCode.V)) {
+								Vector3 posZone = GetPosZone();
+								Transform healZone = (Transform)Instantiate(slowZonePrefab, posZone, Quaternion.identity);
+							}
 						}
 
 					
@@ -270,6 +273,9 @@ public class PlayerController : MonoBehaviour
 						GUI.Box (new Rect (200, 200, 330, 260), "Congratulations!  You have defeated all the Evil Skellies!");
 						if (GUI.Button (new Rect (310, 400, 120, 26), "Continue Playing"))
 								YouWon = false;
+				}
+				if(vieTour <= 0) {
+					GUI.Box (new Rect (200, 200, 330, 260), "Game over ! ");
 				}
 		
 		}

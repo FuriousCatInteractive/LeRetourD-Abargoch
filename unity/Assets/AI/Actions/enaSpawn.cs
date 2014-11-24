@@ -15,6 +15,7 @@ public class enaSpawn : RAINAction
     public override ActionResult Execute(RAIN.Core.AI ai)
     {
 		ai.WorkingMemory.SetItem<bool> ("enaSpawn", true);
+		PlayerController.enaUsePower = false;
         return ActionResult.SUCCESS;
     }
 
