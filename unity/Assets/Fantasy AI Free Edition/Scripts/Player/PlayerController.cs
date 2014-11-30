@@ -64,17 +64,16 @@ public class PlayerController : MonoBehaviour
 		{
 
 				//
-				if(lockTime == false && atkBuff == true) {
-					lockTime = true;
-					buffDelta = Time.time;
+				if (lockTime == false && atkBuff == true) {
+						lockTime = true;
+						buffDelta = Time.time;
 				}
 				
-				if(atkBuff == false) {
-					Damage = DefaultDamage;
-				}
-				else if(Time.time-buffDelta > buffTime && atkBuff == true) {
-					atkBuff = false;
-					lockTime = false;
+				if (atkBuff == false) {
+						Damage = DefaultDamage;
+				} else if (Time.time - buffDelta > buffTime && atkBuff == true) {
+						atkBuff = false;
+						lockTime = false;
 				}
 
 				
@@ -115,27 +114,27 @@ public class PlayerController : MonoBehaviour
 								kill = true;	
 						}
 						
-						if(enaUsePower) {
-							//Utilisation competences
-							if (Input.GetKeyUp (KeyCode.Z)) {
-								Vector3 posZone = GetPosZone();
-								Transform healZone = (Transform)Instantiate(healZonePrefab, posZone, Quaternion.identity);
-							}
+						if (enaUsePower) {
+								//Utilisation competences
+								if (Input.GetKeyUp (KeyCode.Z)) {
+										Vector3 posZone = GetPosZone ();
+										Transform healZone = (Transform)Instantiate (healZonePrefab, posZone, Quaternion.identity);
+								}
 
-							if (Input.GetKeyUp (KeyCode.X)) {
-								Vector3 posZone = GetPosZone();
-								Transform healZone = (Transform)Instantiate(dmgZonePrefab, posZone, Quaternion.identity);
-							}
+								if (Input.GetKeyUp (KeyCode.X)) {
+										Vector3 posZone = GetPosZone ();
+										Transform healZone = (Transform)Instantiate (dmgZonePrefab, posZone, Quaternion.identity);
+								}
 
-							if (Input.GetKeyUp (KeyCode.C)) {
-								Vector3 posZone = GetPosZone();
-								Transform healZone = (Transform)Instantiate(buffatkZonePrefab, posZone, Quaternion.identity);
-							}
+								if (Input.GetKeyUp (KeyCode.C)) {
+										Vector3 posZone = GetPosZone ();
+										Transform healZone = (Transform)Instantiate (buffatkZonePrefab, posZone, Quaternion.identity);
+								}
 
-							if (Input.GetKeyUp (KeyCode.V)) {
-								Vector3 posZone = GetPosZone();
-								Transform healZone = (Transform)Instantiate(slowZonePrefab, posZone, Quaternion.identity);
-							}
+								if (Input.GetKeyUp (KeyCode.V)) {
+										Vector3 posZone = GetPosZone ();
+										Transform healZone = (Transform)Instantiate (slowZonePrefab, posZone, Quaternion.identity);
+								}
 						}
 
 					
@@ -232,22 +231,21 @@ public class PlayerController : MonoBehaviour
 				}
 		}
 
-		private Vector3 GetPosZone (){
-			Vector3 posZone = transform.position;
-			if (directionPlayer == 90){
-				posZone.x = posZone.x + 2;
-			}
-			else if (directionPlayer == -90){
-				posZone.x = posZone.x - 2;
-			}
-			else if (directionPlayer == 0){
-				posZone.z = posZone.z + 2;
-			}
-			if (directionPlayer == -180){
-				posZone.z = posZone.z - 2;
-			}
+		private Vector3 GetPosZone ()
+		{
+				Vector3 posZone = transform.position;
+				if (directionPlayer == 90) {
+						posZone.x = posZone.x + 2;
+				} else if (directionPlayer == -90) {
+						posZone.x = posZone.x - 2;
+				} else if (directionPlayer == 0) {
+						posZone.z = posZone.z + 2;
+				}
+				if (directionPlayer == -180) {
+						posZone.z = posZone.z - 2;
+				}
 		
-		return posZone;
+				return posZone;
 		}
 		
 		void OnGUI ()
@@ -262,20 +260,26 @@ public class PlayerController : MonoBehaviour
 				GUI.Button (new Rect (0, 90, 300, 26), "vie tour : " + vieTour);
 				
 				//Skill bar
-				GUI.Box (new Rect (Screen.width/2 - 178, Screen.height - 91, 345, 91), "", barre_comp);
-				GUI.Box (new Rect (Screen.width/2 - 160, Screen.height - 70, 70, 66), "", heal_zone);
-				GUI.Box (new Rect (Screen.width/2 - 80, Screen.height - 70, 70, 66), "", dmg_zone);
-				GUI.Box (new Rect (Screen.width/2, Screen.height - 70, 70, 66), "", buffatk_zone);
-				GUI.Box (new Rect (Screen.width/2 + 80, Screen.height - 70, 70, 66), "", slow_zone);
+				GUI.Box (new Rect (Screen.width / 2 - 178, Screen.height - 91, 345, 91), "", barre_comp);
+				GUI.Box (new Rect (Screen.width / 2 - 160, Screen.height - 70, 70, 66), "", heal_zone);
+				GUI.Box (new Rect (Screen.width / 2 - 80, Screen.height - 70, 70, 66), "", dmg_zone);
+				GUI.Box (new Rect (Screen.width / 2, Screen.height - 70, 70, 66), "", buffatk_zone);
+				GUI.Box (new Rect (Screen.width / 2 + 80, Screen.height - 70, 70, 66), "", slow_zone);
 
 				//YOU WON!
 				if (YouWon) {
-						GUI.Box (new Rect (200, 200, 330, 260), "Congratulations!  You have defeated all the Evil Skellies!");
-						if (GUI.Button (new Rect (310, 400, 120, 26), "Continue Playing"))
+						GUI.Box (new Rect (Screen.width / 2 - 150, Screen.height / 2 - 100, 300, 200), "Congratulations!  You have defeated all the Evil Skellies!");
+						if (GUI.Button (new Rect (Screen.width / 2 - 60, Screen.height / 2 - 50, 120, 26), "Continue to level 2")) {
 								YouWon = false;
+								Application.LoadLevel (2);
+						}
 				}
-				if(vieTour <= 0) {
-					GUI.Box (new Rect (200, 200, 330, 260), "Game over ! ");
+				if (vieTour <= 0 || php.CurrentHealth <= 0) {
+						GUI.Box (new Rect (Screen.width / 2 - 150, Screen.height / 2 - 100, 300, 200), "Game Over!");
+						if (GUI.Button (new Rect (Screen.width / 2 - 60, Screen.height / 2 - 50, 120, 26), "restart level")) {
+								
+								Application.LoadLevel (1);
+						}
 				}
 		
 		}
