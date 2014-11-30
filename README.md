@@ -10,7 +10,7 @@
 
 
 ####mécaniques de jeu
-* beat'em all, éliminez le plus d'ennemis possible
+* beat'em all, éliminer le plus d'ennemis possible
 * placez les zones pour vous aider à empêcher les ennemis d'atteindre le portail dimensionnel
 
 
@@ -28,8 +28,8 @@
 
 ####travail non implémenté et bugs présent dans la démo
 * on ne peut pas quitter le jeu avec "échap" il faut faire "Alt-F4"
-* manque d'équilibrage, la zone de dégâts tue les ennemis en entier
-* les ennemis tués avec la zone de dégâts ne sont pas déduit du compteur d'ennemis restants ce qui end la condition de victoire impossible
+* manque d'équilibrage, la zone de dégâts tue les ennemis en trop vite
+* les ennemis tués avec la zone de dégâts ne sont pas déduit du compteur d'ennemis restants ce qui rend la condition de victoire impossible si des ennemis sont tué par la zone
 * menu de sélection à faire
 * skin des personnages à retravailler
 
