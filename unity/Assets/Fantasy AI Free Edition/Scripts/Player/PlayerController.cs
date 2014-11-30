@@ -272,14 +272,16 @@ public class PlayerController : MonoBehaviour
 						if (GUI.Button (new Rect (Screen.width / 2 - 60, Screen.height / 2 - 50, 120, 26), "Continue to level 2")) {
 								YouWon = false;
 								Application.LoadLevel (2);
+								enaUsePower = true;
 								TotalAICount = 80;
 						}
 				}
 				if (vieTour <= 0 || php.CurrentHealth <= 0) {
 						GUI.Box (new Rect (Screen.width / 2 - 150, Screen.height / 2 - 100, 300, 200), "Game Over!");
 						if (GUI.Button (new Rect (Screen.width / 2 - 60, Screen.height / 2 - 50, 120, 26), "restart level")) {
-								
+								enaUsePower = true;
 								Application.LoadLevel (1);
+								
 						}
 				}
 		
