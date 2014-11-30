@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
 		private bool playd;
 		private float atime;
 		private bool dealdamage;
-		public int TotalAICount;
+		static public int TotalAICount = 80;
 		static public int vieTour;
 		public bool YouWon;
 		private bool w;
