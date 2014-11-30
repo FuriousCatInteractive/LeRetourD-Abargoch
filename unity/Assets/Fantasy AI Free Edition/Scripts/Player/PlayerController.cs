@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
+	public Transform playerPrefab;
 		public float movespeed = 4;
 		public float DefaultDamage = 60;
 		public float Damage = 60;
@@ -111,7 +112,7 @@ public class PlayerController : MonoBehaviour
 						Cam.transform.position = ch;
 						if (Input.GetKeyUp (KeyCode.Space)) {
 								dealdamage = true;
-								kill = true;	
+								kill = true;
 						}
 						
 						if (enaUsePower) {
@@ -144,7 +145,7 @@ public class PlayerController : MonoBehaviour
 								atime += Time.deltaTime;
 								animation [Attack.name].speed = animation [Attack.name].length / AttackSpeed;
 								animation.CrossFade (Attack.name, 0.15f);
-			
+								
 								if (atime >= AttackSpeed * 0.35f & atime <= AttackSpeed * 0.48f) {
 										if (KillList.Count > 0 & dealdamage) {
 												int ls = KillList.Count;
@@ -158,6 +159,7 @@ public class PlayerController : MonoBehaviour
 												}
 												dealdamage = false;
 										}
+									playerPrefab.audio.Play();
 								}
 			
 								if (atime >= AttackSpeed) {
