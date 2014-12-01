@@ -35,6 +35,6 @@ public class menu : MonoBehaviour
 		                   Screen.height / 20, 
 		                   Screen.width / 2,
 		                   Screen.height / 7),
-		                    "Le Retour d'Abaroch");
+		                    "Le Retour d'Abargoch");
 		}
 }
