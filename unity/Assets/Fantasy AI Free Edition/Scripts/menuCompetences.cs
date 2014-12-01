@@ -352,7 +352,7 @@ public class menuCompetences : MonoBehaviour {
 		                          Screen.width / 4,
 		                          Screen.height /20),
 		                "Resume")) {
-			Application.Quit ();
+			Application.LoadLevel (1);
 		}
 
 
