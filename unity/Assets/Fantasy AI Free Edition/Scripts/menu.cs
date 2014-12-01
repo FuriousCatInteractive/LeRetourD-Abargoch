@@ -18,7 +18,7 @@ public class menu : MonoBehaviour
 		                          Screen.width / 4,
 		                          Screen.height / 10),
 		                           "Play")) {
-						Application.LoadLevel (1);
+						Application.LoadLevel (3);
 				}
 		
 				// Make the second button.
