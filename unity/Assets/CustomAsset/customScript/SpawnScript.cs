@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class SpawnScript : MonoBehaviour {
-	public static int numberOfIA = 1;
+	public static int numberOfIA = 80;
 	public Transform spawnPoint;
 	public Transform mob;
 	public static bool enaNewWave = true;

@@ -47,12 +47,9 @@ public class PlayerController : MonoBehaviour
 		public Transform buffatkZonePrefab;
 		public Transform slowZonePrefab;
 
-<<<<<<< HEAD
 		private double timeBeforeSpawn;
 		private double timeBufferSpawn;
 
-	private bool enaGameOver = true;
-=======
 		private bool enaGameOver = true;
 
 		private bool isMenuBuy = true;
@@ -67,7 +64,6 @@ public class PlayerController : MonoBehaviour
 		public int nbAtkBZone =0;
 		public int nbDmgZone = 0;
 		public int nbSlowZone = 0;
->>>>>>> 2bd97bad67f2982ca93e06a9249566b667f715d8
 	
 	// Use this for initialization
 		void Start ()
@@ -93,22 +89,19 @@ public class PlayerController : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
-<<<<<<< HEAD
 				//ChronoUpdate
 				if (Time.time - timeBufferSpawn >= 1 && timeBeforeSpawn>=-3) {
 						timeBeforeSpawn -= Time.time - timeBufferSpawn;
 						timeBufferSpawn = Time.time;
 				}
-		
-=======
+
 				if (isMenuBuy) {
 					Time.timeScale = 0f; // Le temps s'arrete
 				}
 				else {
 					Time.timeScale = 1.0f; // Le temps reprend
 				}
-
->>>>>>> 2bd97bad67f2982ca93e06a9249566b667f715d8
+		
 				//
 				if (lockTime == false && atkBuff == true) {
 						lockTime = true;
