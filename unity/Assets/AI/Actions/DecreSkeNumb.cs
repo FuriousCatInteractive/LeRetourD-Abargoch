@@ -15,6 +15,8 @@ public class DecreSkeNumb : RAINAction
     public override ActionResult Execute(RAIN.Core.AI ai)
     {
 		PlayerController.TotalAICount--;
+		//MonoBehaviour.Destroy(ai.Body);
+		ai.Body.collider.isTrigger = true;
         return ActionResult.SUCCESS;
     }
 

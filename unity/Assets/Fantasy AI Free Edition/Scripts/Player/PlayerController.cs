@@ -157,8 +157,8 @@ public class PlayerController : MonoBehaviour
 							
 														hp.CurrentHealth = hp.CurrentHealth - Damage;
 														if (hp.Dead) {
-														} else if (hp.CurrentHealth <= 0)
-																TotalAICount = TotalAICount - 1;
+														} //else if (hp.CurrentHealth <= 0)
+																//TotalAICount = TotalAICount - 1;
 												}
 												dealdamage = false;
 										}
