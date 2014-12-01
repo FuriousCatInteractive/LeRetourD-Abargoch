@@ -47,6 +47,9 @@ public class PlayerController : MonoBehaviour
 		public Transform buffatkZonePrefab;
 		public Transform slowZonePrefab;
 
+		private double timeBeforeSpawn;
+		private double timeBufferSpawn;
+
 	private bool enaGameOver = true;
 	
 		// Use this for initialization
@@ -60,13 +63,20 @@ public class PlayerController : MonoBehaviour
 				vieTour = 10;
 				directionPlayer = -90;
 				buffDelta = Time.time;
+				timeBeforeSpawn = 30;
+				timeBufferSpawn = Time.time;
 				
 		}
 	
 		// Update is called once per frame
 		void Update ()
 		{
-
+				//ChronoUpdate
+				if (Time.time - timeBufferSpawn >= 1 && timeBeforeSpawn>=-3) {
+						timeBeforeSpawn -= Time.time - timeBufferSpawn;
+						timeBufferSpawn = Time.time;
+				}
+		
 				//
 				if (lockTime == false && atkBuff == true) {
 						lockTime = true;
@@ -255,6 +265,17 @@ public class PlayerController : MonoBehaviour
 		
 		void OnGUI ()
 		{
+				//Timer before it start
+				//GUILayout.Space (Screen.height / 2);
+				if (timeBeforeSpawn >=0) {
+						GUI.Box (new Rect(Screen.width/2 - 250, Screen.height/3, 500,25),"Temps restant avant le debut de la prochaine vague : " + (int)timeBeforeSpawn);
+				}
+
+				if(timeBeforeSpawn<0 && timeBeforeSpawn>=-3){						
+						GUI.Box (new Rect(Screen.width/2 - 250, Screen.height/3, 500,40),"Il est trop tard pour poser des pieges !!! \n Au combat !");
+				}
+
+
 				//HEALTH BAR AND AI COUNT
 				Health php = (Health)GetComponent ("Health");
 				if (php) {
