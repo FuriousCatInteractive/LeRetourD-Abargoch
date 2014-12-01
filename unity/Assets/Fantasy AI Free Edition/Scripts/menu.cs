@@ -3,7 +3,6 @@ using System.Collections;
 
 public class menu : MonoBehaviour
 {
-	
 		void OnGUI ()
 		{
 				// Make a background box

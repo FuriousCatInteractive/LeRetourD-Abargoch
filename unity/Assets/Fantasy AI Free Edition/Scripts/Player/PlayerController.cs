@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
+	public Transform playerPrefab;
 		public float movespeed = 4;
 		public float DefaultDamage = 60;
 		public float Damage = 60;
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
 		private double buffDelta;
 		private bool lockTime = false;
 		static public bool enaUsePower = true;
+	public AudioClip gameOverSound;
 	
 		public Vector3 For;
 		public List<Transform> KillList;
@@ -44,6 +46,8 @@ public class PlayerController : MonoBehaviour
 		public Transform dmgZonePrefab;
 		public Transform buffatkZonePrefab;
 		public Transform slowZonePrefab;
+
+	private bool enaGameOver = true;
 	
 		// Use this for initialization
 		void Start ()
@@ -56,7 +60,7 @@ public class PlayerController : MonoBehaviour
 				vieTour = 10;
 				directionPlayer = -90;
 				buffDelta = Time.time;
-	
+				
 		}
 	
 		// Update is called once per frame
@@ -111,7 +115,7 @@ public class PlayerController : MonoBehaviour
 						Cam.transform.position = ch;
 						if (Input.GetKeyUp (KeyCode.Space)) {
 								dealdamage = true;
-								kill = true;	
+								kill = true;
 						}
 						
 						if (enaUsePower) {
@@ -144,7 +148,7 @@ public class PlayerController : MonoBehaviour
 								atime += Time.deltaTime;
 								animation [Attack.name].speed = animation [Attack.name].length / AttackSpeed;
 								animation.CrossFade (Attack.name, 0.15f);
-			
+								
 								if (atime >= AttackSpeed * 0.35f & atime <= AttackSpeed * 0.48f) {
 										if (KillList.Count > 0 & dealdamage) {
 												int ls = KillList.Count;
@@ -153,11 +157,12 @@ public class PlayerController : MonoBehaviour
 							
 														hp.CurrentHealth = hp.CurrentHealth - Damage;
 														if (hp.Dead) {
-														} else if (hp.CurrentHealth <= 0)
-																TotalAICount = TotalAICount - 1;
+														} //else if (hp.CurrentHealth <= 0)
+																//TotalAICount = TotalAICount - 1;
 												}
 												dealdamage = false;
 										}
+									playerPrefab.audio.Play();
 								}
 			
 								if (atime >= AttackSpeed) {
@@ -278,10 +283,15 @@ public class PlayerController : MonoBehaviour
 				}
 				if (vieTour <= 0 || php.CurrentHealth <= 0) {
 						GUI.Box (new Rect (Screen.width / 2 - 150, Screen.height / 2 - 100, 300, 200), "Game Over!");
+			//playerPrefab.audio.clip = gameOverSound;
+						if(enaGameOver) {
+							audio.PlayOneShot(gameOverSound, 1F);
+							enaGameOver = false;
+						}
 						if (GUI.Button (new Rect (Screen.width / 2 - 60, Screen.height / 2 - 50, 120, 26), "restart level")) {
 								enaUsePower = true;
+								enaGameOver = true;
 								Application.LoadLevel (1);
-								
 						}
 				}
 		

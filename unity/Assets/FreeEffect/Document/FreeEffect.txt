@@ -1,0 +1,33 @@
+Thank you for your download
+
+Folder composition
+FreeEffect
+  |-Document  Document file
+  |-Material  Material files
+  |-Prefab    Prefab files
+  |-Scene     Scene files
+  |-Script    Script files
+  |-Texture   Texture files
+
+Version 1.0.4
+  Changes from texture of Jpeg to Ping
+  Effect particle is added
+
+Previous version
+Version 1.0.3
+  Unchecked of Shape in Inspector
+  Unchecked of Sub Emitters in Inspector
+  Effect particle is added
+
+Version 1.0.2
+  Modification of JavaScript name in script folder
+  Main.js -> FreeEffectMain.js
+  Operate.js -> FreeEffectOperate.js
+  Document is added
+  Effect particle is added
+
+Version 1.0.1
+  First version
+
+by millsoft
+My url http://millsoft.sub.jp/unity3d/
