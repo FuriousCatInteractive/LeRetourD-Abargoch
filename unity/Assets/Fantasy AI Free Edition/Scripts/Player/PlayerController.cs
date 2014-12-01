@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
 		private double buffDelta;
 		private bool lockTime = false;
 		static public bool enaUsePower = true;
-	public AudioClip gameOverSound;
+		public AudioClip gameOverSound;
 	
 		public Vector3 For;
 		public List<Transform> KillList;
@@ -47,9 +47,22 @@ public class PlayerController : MonoBehaviour
 		public Transform buffatkZonePrefab;
 		public Transform slowZonePrefab;
 
-	private bool enaGameOver = true;
+		private bool enaGameOver = true;
+
+		private bool isMenuBuy = true;
+
+		private int wave = 0;
+		
+		
+		Texture2D HealButton;
+		
+		public int nbGoldLeft = 0;
+		public int nbHealZone = 0;
+		public int nbAtkBZone =0;
+		public int nbDmgZone = 0;
+		public int nbSlowZone = 0;
 	
-		// Use this for initialization
+	// Use this for initialization
 		void Start ()
 		{
 				if (Cam)
@@ -61,11 +74,22 @@ public class PlayerController : MonoBehaviour
 				directionPlayer = -90;
 				buffDelta = Time.time;
 				
+				setGoldLeft (200);
+		}
+
+		private void setGoldLeft(int goldToAdd){
+			nbGoldLeft+=goldToAdd;
 		}
 	
 		// Update is called once per frame
 		void Update ()
 		{
+				if (isMenuBuy) {
+					Time.timeScale = 0f; // Le temps s'arrete
+				}
+				else {
+					Time.timeScale = 1.0f; // Le temps reprend
+				}
 
 				//
 				if (lockTime == false && atkBuff == true) {
@@ -86,7 +110,7 @@ public class PlayerController : MonoBehaviour
 				if (w) {
 						if (TotalAICount <= 0) {
 								YouWon = true;
-								w = false;
+								//w = false;
 						}
 				}
 		
@@ -120,24 +144,28 @@ public class PlayerController : MonoBehaviour
 						
 						if (enaUsePower) {
 								//Utilisation competences
-								if (Input.GetKeyUp (KeyCode.Z)) {
+								if (Input.GetKeyUp (KeyCode.Z) && nbHealZone > 0) {
 										Vector3 posZone = GetPosZone ();
 										Transform healZone = (Transform)Instantiate (healZonePrefab, posZone, Quaternion.identity);
+										nbHealZone--;
 								}
 
-								if (Input.GetKeyUp (KeyCode.X)) {
+								if (Input.GetKeyUp (KeyCode.X) && nbDmgZone > 0) {
 										Vector3 posZone = GetPosZone ();
 										Transform healZone = (Transform)Instantiate (dmgZonePrefab, posZone, Quaternion.identity);
+										nbDmgZone--;
 								}
 
-								if (Input.GetKeyUp (KeyCode.C)) {
+								if (Input.GetKeyUp (KeyCode.C) && nbAtkBZone > 0) {
 										Vector3 posZone = GetPosZone ();
 										Transform healZone = (Transform)Instantiate (buffatkZonePrefab, posZone, Quaternion.identity);
+										nbAtkBZone--;
 								}
 
-								if (Input.GetKeyUp (KeyCode.V)) {
+								if (Input.GetKeyUp (KeyCode.V) && nbSlowZone > 0) {
 										Vector3 posZone = GetPosZone ();
 										Transform healZone = (Transform)Instantiate (slowZonePrefab, posZone, Quaternion.identity);
+										nbSlowZone--;
 								}
 						}
 
@@ -214,7 +242,7 @@ public class PlayerController : MonoBehaviour
 								}
 						}
 				}
-		}
+	}
 	
 		void OnTriggerEnter (Collider other)
 		{
@@ -274,11 +302,26 @@ public class PlayerController : MonoBehaviour
 				//YOU WON!
 				if (YouWon) {
 						GUI.Box (new Rect (Screen.width / 2 - 150, Screen.height / 2 - 100, 300, 200), "Congratulations!  You have defeated all the Evil Skellies!");
-						if (GUI.Button (new Rect (Screen.width / 2 - 60, Screen.height / 2 - 50, 120, 26), "Continue to level 2")) {
+						
+						if(wave > 2) {
+							if (GUI.Button (new Rect (Screen.width / 2 - 60, Screen.height / 2 - 50, 120, 26), "Continue to level 2")) {
+									YouWon = false;
+									Application.LoadLevel (2);
+									enaUsePower = true;
+									SpawnScript.numberOfIA = 80;
+								TotalAICount = SpawnScript.numberOfIA;
+							}
+						}
+						else { 
+							if(GUI.Button (new Rect (Screen.width / 2 - 60, Screen.height / 2 - 50, 120, 26), "Next wave")) {
+								setGoldLeft (200);
+								SpawnScript.enaNewWave = true;
+								SpawnScript.numberOfIA += 40;
+								TotalAICount = SpawnScript.numberOfIA;
+								isMenuBuy = true;
 								YouWon = false;
-								Application.LoadLevel (2);
-								enaUsePower = true;
-								TotalAICount = 80;
+								wave++;
+							}
 						}
 				}
 				if (vieTour <= 0 || php.CurrentHealth <= 0) {
@@ -294,7 +337,182 @@ public class PlayerController : MonoBehaviour
 								Application.LoadLevel (1);
 						}
 				}
-		
-		}
+
+				if(isMenuBuy) {
+					//title box
+					GUI.Box (new Rect (Screen.width / 4, //pos largeur
+					                   Screen.height / 20, //pos hauteur
+					                   Screen.width / 2, //largeur
+					                   Screen.height / 7), //hauteur
+					         "Skills\n\n Or restant : "+nbGoldLeft);
+					
+					/*********************HEAL Buy************************/
+					/*													  */
+					/*													  */
+					/******************************************************/			
+					
+					GUI.Box (new Rect (Screen.width / 8 + Screen.width / 30 + 340,
+					                   Screen.height / 4 + Screen.height / 15 - 50, 
+					                   120,
+					                   100),
+					         "Heal Zone \n\n" + nbHealZone);
+					
+					//Buttons
+					if(nbHealZone >= 1){ 
+						if(GUI.Button (new Rect (Screen.width / 8 + Screen.width / 30 +120,
+						                         Screen.height / 4 + Screen.height / 15 -50, 
+						                         120,
+						                         100),
+						               "Vendre \n\n +100G"))
+						{
+							nbGoldLeft+=100;
+							nbHealZone--;
+						}
+					}
+					
+					if(nbGoldLeft >= 100){
+						if(GUI.Button (new Rect (Screen.width / 8 + Screen.width / 30 + 560,
+						                         Screen.height / 4 + Screen.height / 15 -50, 
+						                         120 ,
+						                         100),
+						               "Acheter \n\n -100G"))
+						{
+							nbGoldLeft-=100;
+							nbHealZone++;
+						}
+					}
+					
+					/*********************DMG Buy************************/
+					/*													  */
+					/*													  */
+					/******************************************************/	
+					
+					
+					
+					GUI.Box (new Rect (Screen.width / 8 + Screen.width / 30 + 340,
+					                   Screen.height / 4 + Screen.height / 15 + 70, 
+					                   120,
+					                   100),
+					         "Damage Zone \n\n" +nbDmgZone);
+					
+					
+					//Buttons
+					if(nbDmgZone >= 1){
+						if(GUI.Button (new Rect (Screen.width / 8 + Screen.width / 30 +120,
+						                         Screen.height / 4 + Screen.height / 15 + 70, 
+						                         120,
+						                         100),
+						               "Vendre \n\n +100G"))
+						{
+							nbGoldLeft+=100;
+							nbDmgZone--;
+						}
+					}
+					
+					if(nbGoldLeft >= 100){
+						if(GUI.Button (new Rect (Screen.width / 8 + Screen.width / 30 +560,
+						                         Screen.height / 4 + Screen.height / 15 + 70, 
+						                         120,
+						                         100),
+						               "Acheter \n\n -100G"))
+						{
+							nbGoldLeft-=100;
+							nbDmgZone++;
+						}
+					}
+					
+					/*********************AtkBuff Tree************************/
+					/*													  */
+					/*													  */
+					/******************************************************/	
+					
+					
+					GUI.Box (new Rect (Screen.width / 8 + Screen.width / 30 + 340,
+					                   Screen.height / 4 + Screen.height / 15 + 190, 
+					                   120,
+					                   100),
+					         "Attack Buff Zone \n\n"+nbAtkBZone);
+					
+					
+					
+					//buttons
+					if(nbAtkBZone >= 1){
+						if(GUI.Button (new Rect (Screen.width / 8 + Screen.width / 30 +120,
+						                         Screen.height / 4 + Screen.height / 15 + 190, 
+						                         120,
+						                         100),
+						               "Vendre \n\n +100G"))
+						{
+							nbGoldLeft+=100;
+							nbAtkBZone--;
+						}
+					}
+					
+					if (nbGoldLeft >= 100) {
+						if(GUI.Button (new Rect (Screen.width / 8 + Screen.width / 30 + 560,
+						                         Screen.height / 4 + Screen.height / 15 + 190, 
+						                         120,
+						                         100),
+						               "Acheter \n\n -100G"))
+						{
+							nbGoldLeft-=100;
+							nbAtkBZone++;
+						}
+					}
+					
+					/*********************Slow Tree************************/
+					/*													  */
+					/*													  */
+					/******************************************************/	
+					
+					
+					
+					GUI.Box (new Rect (Screen.width / 8 + Screen.width / 30+340,
+					                   Screen.height / 4 + Screen.height / 15 +310, 
+					                   120,
+					                   100),
+					         "Slow Zone \n\n"+nbSlowZone);
+					
+					
+					//buttons
+					if(nbSlowZone >= 1){
+						if(GUI.Button (new Rect (Screen.width / 8 + Screen.width / 30 +120,
+						                         Screen.height / 4 + Screen.height / 15 +310, 
+						                         120,
+						                         100),
+						               "Vendre \n\n +100G"))
+						{
+							nbGoldLeft+=100;
+							nbSlowZone--;
+						}
+					}
+					
+					if(nbGoldLeft >= 100){
+						if(GUI.Button (new Rect (Screen.width / 8 + Screen.width / 30+560,
+						                         Screen.height / 4 + Screen.height / 15 +310, 
+						                         120,
+						                         100),
+						               "Acheter \n\n -100G"))
+						{
+							nbGoldLeft-=100;
+							nbSlowZone++;
+						}
+					}
+					
+					/*********************Quit Button**********************/
+					/*													  */
+					/*													  */
+					/******************************************************/	
+					if (GUI.Button (new Rect (Screen.width / 2 - Screen.width / 8,
+					                          Screen.height / 2 + Screen.height / 20 + 260, 
+					                          Screen.width / 4,
+					                          Screen.height /20),
+					                "Resume")) {
+						Application.Quit ();
+						isMenuBuy = false;
+					}
+		}//fin de OnGUI
 	
+	}
+
 }

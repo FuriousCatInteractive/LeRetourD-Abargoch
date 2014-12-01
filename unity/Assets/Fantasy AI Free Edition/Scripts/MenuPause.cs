@@ -23,10 +23,9 @@ public class MenuPause : MonoBehaviour
 	
 		void Start ()
 		{
-	
+			
 		}
-	
-	
+
 		void Update ()
 		{
 				// Si le joueur appuis sur Echap alors la valeur de isPaused devient le contraire.

@@ -2,18 +2,22 @@
 using System.Collections;
 
 public class SpawnScript : MonoBehaviour {
-	public int numberOfIA;
+	public static int numberOfIA = 1;
 	public Transform spawnPoint;
 	public Transform mob;
+	public static bool enaNewWave = true;
 
 	// Use this for initialization
 	void Start () {
-		for(int i = 0; i<numberOfIA; ++i) {
-			Instantiate (mob, spawnPoint.position, Quaternion.identity);
-		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if(enaNewWave == true) {
+			for(int i = 0; i<numberOfIA; ++i) {
+				Instantiate (mob, spawnPoint.position, Quaternion.identity);
+			}
+			enaNewWave = false;
+		}
 	}
 }
