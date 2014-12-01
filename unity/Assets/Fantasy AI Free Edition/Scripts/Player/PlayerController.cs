@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
 				vieTour = 10;
 				directionPlayer = -90;
 				buffDelta = Time.time;
-	
+				
 		}
 	
 		// Update is called once per frame
