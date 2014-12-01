@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
 		private double buffDelta;
 		private bool lockTime = false;
 		static public bool enaUsePower = true;
+	public AudioClip gameOverSound;
 	
 		public Vector3 For;
 		public List<Transform> KillList;
@@ -45,6 +46,8 @@ public class PlayerController : MonoBehaviour
 		public Transform dmgZonePrefab;
 		public Transform buffatkZonePrefab;
 		public Transform slowZonePrefab;
+
+	private bool enaGameOver = true;
 	
 		// Use this for initialization
 		void Start ()
@@ -280,10 +283,15 @@ public class PlayerController : MonoBehaviour
 				}
 				if (vieTour <= 0 || php.CurrentHealth <= 0) {
 						GUI.Box (new Rect (Screen.width / 2 - 150, Screen.height / 2 - 100, 300, 200), "Game Over!");
+			//playerPrefab.audio.clip = gameOverSound;
+						if(enaGameOver) {
+							audio.PlayOneShot(gameOverSound, 1F);
+							enaGameOver = false;
+						}
 						if (GUI.Button (new Rect (Screen.width / 2 - 60, Screen.height / 2 - 50, 120, 26), "restart level")) {
 								enaUsePower = true;
+								enaGameOver = true;
 								Application.LoadLevel (1);
-								
 						}
 				}
 		
