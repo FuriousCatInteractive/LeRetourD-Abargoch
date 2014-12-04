@@ -18,24 +18,17 @@
 * flèches directionelles du clavier pour bouger le personnage
 * "z", "x", "c", "v" pour placer les différentes zones
 * "espace" pour attaquer les ennemis
+* souris pour les menus et la sélection des améliorations
 
 
 ####contenu de la démo:
 * implémentation de la partie beat'em all et quelques zones de défense
-* un seul niveau avec une seule vague d'ennemis
+* deux niveaux avec une seule vague d'ennemis
 * dès que la vague commence on ne peut plus placer les zones de défense
 
 
-####travail non implémenté et bugs présent dans la démo
-* on ne peut pas quitter le jeu avec "échap" il faut faire "Alt-F4"
-* manque d'équilibrage, la zone de dégâts tue les ennemis en trop vite
-* les ennemis tués avec la zone de dégâts ne sont pas déduit du compteur d'ennemis restants ce qui rend la condition de victoire impossible si des ennemis sont tué par la zone
-* menu de sélection à faire
-* skin des personnages à retravailler
-
-####note:
- l'éxécutable se trouve dans le dossier unity/ 
- 
+####Screenshot
+![screenshot](doc/Capture_gameplay.PNG)
 
 
 
