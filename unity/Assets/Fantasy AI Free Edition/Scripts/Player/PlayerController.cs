@@ -320,6 +320,37 @@ public class PlayerController : MonoBehaviour
 				GUI.Box (new Rect (Screen.width / 2 - 80, Screen.height - 70, 70, 66), "", dmg_zone);
 				GUI.Box (new Rect (Screen.width / 2, Screen.height - 70, 70, 66), "", buffatk_zone);
 				GUI.Box (new Rect (Screen.width / 2 + 80, Screen.height - 70, 70, 66), "", slow_zone);
+				
+				GUI.color = Color.black;
+				if(nbHealZone <= 0) {
+					GUI.color = Color.red;
+				}
+				else {
+					GUI.color = Color.black;
+				}
+				GUI.Label (new Rect (Screen.width / 2 - 155, Screen.height - 70, 70, 66), nbHealZone.ToString());
+				if(nbDmgZone <= 0) {
+					GUI.color = Color.red;
+				}
+				else {
+					GUI.color = Color.black;
+				}
+				GUI.Label (new Rect (Screen.width / 2 - 75, Screen.height - 70, 70, 66), nbDmgZone.ToString());
+				if(nbAtkBZone <= 0){
+					GUI.color = Color.red;
+				}
+				else {
+					GUI.color = Color.black;
+				}
+				GUI.Label (new Rect (Screen.width / 2 + 5, Screen.height - 70, 70, 66), nbAtkBZone.ToString());
+				if(nbSlowZone <= 0){
+					GUI.color = Color.red;
+				}
+				else {
+					GUI.color = Color.black;
+				}
+				GUI.Label (new Rect (Screen.width / 2 + 85, Screen.height - 70, 70, 66), nbSlowZone.ToString());
+				GUI.color = Color.white;
 
 				//YOU WON!
 				if (YouWon) {

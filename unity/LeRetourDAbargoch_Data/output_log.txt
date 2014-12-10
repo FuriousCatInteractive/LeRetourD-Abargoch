@@ -1,0 +1,43 @@
+Initialize engine version: 4.5.5f1 (7684ad0c5a44)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA Quadro K1000M  (ID=0xffc)
+    Vendor:   NVIDIA
+    VRAM:     1994 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\Programmation\FuriousCatInteractive\LeRetourD-Abargoch\unity\LeRetourDAbargoch_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\Programmation\FuriousCatInteractive\LeRetourD-Abargoch\unity\LeRetourDAbargoch_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\Programmation\FuriousCatInteractive\LeRetourD-Abargoch\unity\LeRetourDAbargoch_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading D:\Programmation\FuriousCatInteractive\LeRetourD-Abargoch\unity\LeRetourDAbargoch_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: D:\Programmation\FuriousCatInteractive\LeRetourD-Abargoch\unity\LeRetourDAbargoch_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\Programmation\FuriousCatInteractive\LeRetourD-Abargoch\unity\LeRetourDAbargoch_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\Programmation\FuriousCatInteractive\LeRetourD-Abargoch\unity\LeRetourDAbargoch_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading D:\Programmation\FuriousCatInteractive\LeRetourD-Abargoch\unity\LeRetourDAbargoch_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+Platform assembly: D:\Programmation\FuriousCatInteractive\LeRetourD-Abargoch\unity\LeRetourDAbargoch_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading D:\Programmation\FuriousCatInteractive\LeRetourD-Abargoch\unity\LeRetourDAbargoch_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: D:\Programmation\FuriousCatInteractive\LeRetourD-Abargoch\unity\LeRetourDAbargoch_Data\Managed\RAIN.dll (this message is harmless)
+Loading D:\Programmation\FuriousCatInteractive\LeRetourD-Abargoch\unity\LeRetourDAbargoch_Data\Managed\RAIN.dll into Unity Child Domain
+Platform assembly: D:\Programmation\FuriousCatInteractive\LeRetourD-Abargoch\unity\LeRetourDAbargoch_Data\Managed\RAINMetaform.dll (this message is harmless)
+Loading D:\Programmation\FuriousCatInteractive\LeRetourD-Abargoch\unity\LeRetourDAbargoch_Data\Managed\RAINMetaform.dll into Unity Child Domain
+- Completed reload, in  0.127 seconds
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Platform assembly: D:\Programmation\FuriousCatInteractive\LeRetourD-Abargoch\unity\LeRetourDAbargoch_Data\Managed\System.dll (this message is harmless)
+Platform assembly: D:\Programmation\FuriousCatInteractive\LeRetourD-Abargoch\unity\LeRetourDAbargoch_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\Programmation\FuriousCatInteractive\LeRetourD-Abargoch\unity\LeRetourDAbargoch_Data\Managed\System.Xml.dll (this message is harmless)
+Platform assembly: D:\Programmation\FuriousCatInteractive\LeRetourD-Abargoch\unity\LeRetourDAbargoch_Data\Managed\Mono.Security.dll (this message is harmless)
+Platform assembly: D:\Programmation\FuriousCatInteractive\LeRetourD-Abargoch\unity\LeRetourDAbargoch_Data\Managed\Boo.Lang.dll (this message is harmless)
+UnloadTime: 4.281289 ms
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 210.
+Total: 1.884462 ms (FindLiveObjects: 0.019341 ms CreateObjectMapping: 0.019736 ms MarkObjects: 0.230130 ms  DeleteObjects: 0.732232 ms)
+
+UnloadTime: 0.542365 ms
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 2046.
+Total: 4.222079 ms (FindLiveObjects: 0.143288 ms CreateObjectMapping: 0.045394 ms MarkObjects: 3.004718 ms  DeleteObjects: 0.219077 ms)
+
