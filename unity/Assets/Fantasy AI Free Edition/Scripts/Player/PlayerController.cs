@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
 				timeBeforeSpawn = 30;
 				timeBufferSpawn = Time.time;
 				
-				setGoldLeft (500);
+				setGoldLeft (200);
 		}
 
 		private void setGoldLeft(int goldToAdd){
@@ -414,7 +414,7 @@ public class PlayerController : MonoBehaviour
 			                   offsetY + 0*(ecart + Screen.height / 10), 
 			                   Screen.width /12,
 			                   Screen.height / 10),
-			         "Heal Zone \n\n" + Screen.height+ " " +Screen.width);
+			         "Heal Zone \n\n" +  nbHealZone);
 					
 					//Buttons
 					if(nbHealZone >= 1){ 
