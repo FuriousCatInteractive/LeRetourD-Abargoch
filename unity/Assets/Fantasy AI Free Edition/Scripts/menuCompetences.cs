@@ -7,7 +7,7 @@ public class menuCompetences : MonoBehaviour {
 
 	Texture2D HealButton;
 
-	int nbPointLeft = 14;
+	int nbPointLeft = 0;
 	int healRank = 0;
 	int atkBRank =0;
 	int dmgRank = 0;
