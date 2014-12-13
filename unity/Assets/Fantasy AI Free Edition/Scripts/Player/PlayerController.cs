@@ -367,7 +367,7 @@ public class PlayerController : MonoBehaviour
 						}
 						else { 
 							if(GUI.Button (new Rect (Screen.width / 2 - 60, Screen.height / 2 - 50, 120, 26), "Next wave")) {
-								setGoldLeft (200);
+								setGoldLeft (100);
 								SpawnScript.enaNewWave = true;
 								SpawnScript.numberOfIA += 40;
 								TotalAICount = SpawnScript.numberOfIA;
@@ -561,7 +561,7 @@ public class PlayerController : MonoBehaviour
 					                          Screen.width / 4,
 					                          Screen.height /20),
 					                "Resume")) {
-						Application.Quit ();
+						//Application.Quit ();
 						isMenuBuy = false;
 					}
 		}//fin de OnGUI

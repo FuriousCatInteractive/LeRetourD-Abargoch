@@ -20,7 +20,7 @@ Platform assembly: D:\Programmation\FuriousCatInteractive\LeRetourD-Abargoch\uni
 Loading D:\Programmation\FuriousCatInteractive\LeRetourD-Abargoch\unity\LeRetourDAbargoch_Data\Managed\RAIN.dll into Unity Child Domain
 Platform assembly: D:\Programmation\FuriousCatInteractive\LeRetourD-Abargoch\unity\LeRetourDAbargoch_Data\Managed\RAINMetaform.dll (this message is harmless)
 Loading D:\Programmation\FuriousCatInteractive\LeRetourD-Abargoch\unity\LeRetourDAbargoch_Data\Managed\RAINMetaform.dll into Unity Child Domain
-- Completed reload, in  0.127 seconds
+- Completed reload, in  0.093 seconds
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
@@ -29,15 +29,21 @@ Platform assembly: D:\Programmation\FuriousCatInteractive\LeRetourD-Abargoch\uni
 Platform assembly: D:\Programmation\FuriousCatInteractive\LeRetourD-Abargoch\unity\LeRetourDAbargoch_Data\Managed\System.Xml.dll (this message is harmless)
 Platform assembly: D:\Programmation\FuriousCatInteractive\LeRetourD-Abargoch\unity\LeRetourDAbargoch_Data\Managed\Mono.Security.dll (this message is harmless)
 Platform assembly: D:\Programmation\FuriousCatInteractive\LeRetourD-Abargoch\unity\LeRetourDAbargoch_Data\Managed\Boo.Lang.dll (this message is harmless)
-UnloadTime: 4.281289 ms
+UnloadTime: 3.999797 ms
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
 Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 210.
-Total: 1.884462 ms (FindLiveObjects: 0.019341 ms CreateObjectMapping: 0.019736 ms MarkObjects: 0.230130 ms  DeleteObjects: 0.732232 ms)
+Total: 1.793652 ms (FindLiveObjects: 0.018947 ms CreateObjectMapping: 0.018157 ms MarkObjects: 0.218285 ms  DeleteObjects: 0.683277 ms)
 
-UnloadTime: 0.542365 ms
+UnloadTime: 0.616173 ms
 Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
 Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 2046.
-Total: 4.222079 ms (FindLiveObjects: 0.143288 ms CreateObjectMapping: 0.045394 ms MarkObjects: 3.004718 ms  DeleteObjects: 0.219077 ms)
+Total: 4.085059 ms (FindLiveObjects: 0.139339 ms CreateObjectMapping: 0.044999 ms MarkObjects: 2.934816 ms  DeleteObjects: 0.215522 ms)
+
+UnloadTime: 40.259686 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 1353 unused Assets to reduce memory usage. Loaded Objects now: 642.
+Total: 77.165749 ms (FindLiveObjects: 0.195391 ms CreateObjectMapping: 0.301178 ms MarkObjects: 5.540033 ms  DeleteObjects: 70.239418 ms)
 
