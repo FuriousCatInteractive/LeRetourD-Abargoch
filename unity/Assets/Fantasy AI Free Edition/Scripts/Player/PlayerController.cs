@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
-	public Transform playerPrefab;
+		public Transform playerPrefab;
 		public float movespeed = 4;
 		public float DefaultDamage = 60;
 		public float Damage = 60;
@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 		private bool playd;
 		private float atime;
 		private bool dealdamage;
-		static public int TotalAICount = 80;
+		static public int TotalAICount;
 		static public int vieTour;
 		public bool YouWon;
 		private bool w;
@@ -61,11 +61,11 @@ public class PlayerController : MonoBehaviour
 		
 		public int nbGoldLeft = 0;
 		public int nbHealZone = 0;
-		public int nbAtkBZone =0;
+		public int nbAtkBZone = 0;
 		public int nbDmgZone = 0;
 		public int nbSlowZone = 0;
 	
-	// Use this for initialization
+		// Use this for initialization
 		void Start ()
 		{
 				if (Cam)
@@ -73,33 +73,34 @@ public class PlayerController : MonoBehaviour
 		
 				w = true;
 				playd = true;
-				vieTour = 10;
+				vieTour = 20;
 				directionPlayer = -90;
 				buffDelta = Time.time;
 				timeBeforeSpawn = 30;
 				timeBufferSpawn = Time.time;
 				
-				setGoldLeft (200);
+				setGoldLeft (500);
+				TotalAICount = 40;
 		}
 
-		private void setGoldLeft(int goldToAdd){
-			nbGoldLeft+=goldToAdd;
+		private void setGoldLeft (int goldToAdd)
+		{
+				nbGoldLeft += goldToAdd;
 		}
 	
 		// Update is called once per frame
 		void Update ()
 		{
 				//ChronoUpdate
-				if (Time.time - timeBufferSpawn >= 1 && timeBeforeSpawn>=-3) {
+				if (Time.time - timeBufferSpawn >= 1 && timeBeforeSpawn >= -3) {
 						timeBeforeSpawn -= Time.time - timeBufferSpawn;
 						timeBufferSpawn = Time.time;
 				}
 
 				if (isMenuBuy) {
-					Time.timeScale = 0f; // Le temps s'arrete
-				}
-				else {
-					Time.timeScale = 1.0f; // Le temps reprend
+						Time.timeScale = 0f; // Le temps s'arrete
+				} else {
+						Time.timeScale = 1.0f; // Le temps reprend
 				}
 		
 				//
@@ -197,11 +198,11 @@ public class PlayerController : MonoBehaviour
 														hp.CurrentHealth = hp.CurrentHealth - Damage;
 														if (hp.Dead) {
 														} //else if (hp.CurrentHealth <= 0)
-																//TotalAICount = TotalAICount - 1;
+														//TotalAICount = TotalAICount - 1;
 												}
 												dealdamage = false;
 										}
-									playerPrefab.audio.Play();
+										playerPrefab.audio.Play ();
 								}
 			
 								if (atime >= AttackSpeed) {
@@ -253,7 +254,7 @@ public class PlayerController : MonoBehaviour
 								}
 						}
 				}
-	}
+		}
 	
 		void OnTriggerEnter (Collider other)
 		{
@@ -296,12 +297,12 @@ public class PlayerController : MonoBehaviour
 		{
 				//Timer before it start
 				//GUILayout.Space (Screen.height / 2);
-		if (timeBeforeSpawn >=0 && !isMenuBuy) {
-						GUI.Box (new Rect(Screen.width/2 - 250, Screen.height/3, 500,25),"Temps restant avant le debut de la prochaine vague : " + (int)timeBeforeSpawn);
+				if (timeBeforeSpawn >= 0 && !isMenuBuy) {
+						GUI.Box (new Rect (Screen.width / 2 - 250, Screen.height / 3, 500, 25), "Temps restant avant le debut de la prochaine vague : " + (int)timeBeforeSpawn);
 				}
 
-				if(timeBeforeSpawn<0 && timeBeforeSpawn>=-3){						
-						GUI.Box (new Rect(Screen.width/2 - 250, Screen.height/3, 500,40),"Il est trop tard pour poser des pieges !!! \n Au combat !");
+				if (timeBeforeSpawn < 0 && timeBeforeSpawn >= -3) {						
+						GUI.Box (new Rect (Screen.width / 2 - 250, Screen.height / 3, 500, 40), "Il est trop tard pour poser des pieges !!! \n Au combat !");
 				}
 
 
@@ -322,67 +323,62 @@ public class PlayerController : MonoBehaviour
 				GUI.Box (new Rect (Screen.width / 2 + 80, Screen.height - 70, 70, 66), "", slow_zone);
 				
 				GUI.color = Color.black;
-				if(nbHealZone <= 0) {
-					GUI.color = Color.red;
+				if (nbHealZone <= 0) {
+						GUI.color = Color.red;
+				} else {
+						GUI.color = Color.black;
 				}
-				else {
-					GUI.color = Color.black;
+				GUI.Label (new Rect (Screen.width / 2 - 155, Screen.height - 70, 70, 66), nbHealZone.ToString ());
+				if (nbDmgZone <= 0) {
+						GUI.color = Color.red;
+				} else {
+						GUI.color = Color.black;
 				}
-				GUI.Label (new Rect (Screen.width / 2 - 155, Screen.height - 70, 70, 66), nbHealZone.ToString());
-				if(nbDmgZone <= 0) {
-					GUI.color = Color.red;
+				GUI.Label (new Rect (Screen.width / 2 - 75, Screen.height - 70, 70, 66), nbDmgZone.ToString ());
+				if (nbAtkBZone <= 0) {
+						GUI.color = Color.red;
+				} else {
+						GUI.color = Color.black;
 				}
-				else {
-					GUI.color = Color.black;
+				GUI.Label (new Rect (Screen.width / 2 + 5, Screen.height - 70, 70, 66), nbAtkBZone.ToString ());
+				if (nbSlowZone <= 0) {
+						GUI.color = Color.red;
+				} else {
+						GUI.color = Color.black;
 				}
-				GUI.Label (new Rect (Screen.width / 2 - 75, Screen.height - 70, 70, 66), nbDmgZone.ToString());
-				if(nbAtkBZone <= 0){
-					GUI.color = Color.red;
-				}
-				else {
-					GUI.color = Color.black;
-				}
-				GUI.Label (new Rect (Screen.width / 2 + 5, Screen.height - 70, 70, 66), nbAtkBZone.ToString());
-				if(nbSlowZone <= 0){
-					GUI.color = Color.red;
-				}
-				else {
-					GUI.color = Color.black;
-				}
-				GUI.Label (new Rect (Screen.width / 2 + 85, Screen.height - 70, 70, 66), nbSlowZone.ToString());
+				GUI.Label (new Rect (Screen.width / 2 + 85, Screen.height - 70, 70, 66), nbSlowZone.ToString ());
 				GUI.color = Color.white;
 
 				//YOU WON!
 				if (YouWon) {
 						GUI.Box (new Rect (Screen.width / 2 - 150, Screen.height / 2 - 100, 300, 200), "Congratulations!  You have defeated all the Evil Skellies!");
 						
-						if(wave > 2) {
-							if (GUI.Button (new Rect (Screen.width / 2 - 60, Screen.height / 2 - 50, 120, 26), "Continue to level 2")) {
-									YouWon = false;
-									Application.LoadLevel (2);
-									enaUsePower = true;
-									SpawnScript.numberOfIA = 80;
-								TotalAICount = SpawnScript.numberOfIA;
-							}
-						}
-						else { 
-							if(GUI.Button (new Rect (Screen.width / 2 - 60, Screen.height / 2 - 50, 120, 26), "Next wave")) {
-								setGoldLeft (100);
-								SpawnScript.enaNewWave = true;
-								SpawnScript.numberOfIA += 40;
-								TotalAICount = SpawnScript.numberOfIA;
-								isMenuBuy = true;
-								YouWon = false;
-								wave++;
-							}
+						if (wave > 2) {
+								if (GUI.Button (new Rect (Screen.width / 2 - 60, Screen.height / 2 - 50, 120, 26), "Continue to level 2")) {
+										YouWon = false;
+										Application.LoadLevel (2);
+										enaUsePower = true;
+										SpawnScript.numberOfIA = 80;
+										TotalAICount = SpawnScript.numberOfIA;
+								}
+						} else { 
+								if (GUI.Button (new Rect (Screen.width / 2 - 60, Screen.height / 2 - 50, 120, 26), "Next wave")) {
+										setGoldLeft (100);
+										SpawnScript.enaNewWave = true;
+										SpawnScript.numberOfIA += 40;
+										TotalAICount = SpawnScript.numberOfIA;
+										isMenuBuy = true;
+										YouWon = false;
+										wave++;
+								}
 						}
 				}
 				if (vieTour <= 0 || php.CurrentHealth <= 0) {
 						GUI.Box (new Rect (Screen.width / 2 - 150, Screen.height / 2 - 100, 300, 200), "Game Over!");
-			//playerPrefab.audio.clip = gameOverSound;
-						if(enaGameOver) {
-							audio.PlayOneShot(gameOverSound, 1F);
-							enaGameOver = false;
+						//playerPrefab.audio.clip = gameOverSound;
+						if (enaGameOver) {
+								audio.PlayOneShot (gameOverSound, 1F);
+								enaGameOver = false;
 						}
 						if (GUI.Button (new Rect (Screen.width / 2 - 60, Screen.height / 2 - 50, 120, 26), "restart level")) {
 								enaUsePower = true;
@@ -391,187 +387,179 @@ public class PlayerController : MonoBehaviour
 						}
 				}
 
-				if(isMenuBuy) {
+				if (isMenuBuy) {
 
-			int offsetX = 0;
-			int offsetY = Screen.height / 5;
-			int ecart = Screen.width / 40;
+						int offsetX = 0;
+						int offsetY = Screen.height / 5;
+						int ecart = Screen.width / 40;
 
 					
-					//title box
-					GUI.Box (new Rect (3*Screen.width / 8, //pos largeur
+						//title box
+						GUI.Box (new Rect (3 * Screen.width / 8, //pos largeur
 					                   Screen.height / 20, //pos hauteur
 					                   Screen.width / 4, //largeur
 					                   Screen.height / 10), //hauteur
-					         "Skills\n\n Or restant : "+nbGoldLeft);
+					         "Skills\n\n Or restant : " + nbGoldLeft);
 					
-					/*********************HEAL Buy************************/
-					/*													  */
-					/*													  */
-					/******************************************************/			
+						/*********************HEAL Buy************************/
+						/*													  */
+						/*													  */
+						/******************************************************/			
 						
-					GUI.Box (new Rect (Screen.width / 8 + Screen.width / 30 + Screen.width / 4,
-			                   offsetY + 0*(ecart + Screen.height / 10), 
-			                   Screen.width /12,
+						GUI.Box (new Rect (Screen.width / 8 + Screen.width / 30 + Screen.width / 4,
+			                   offsetY + 0 * (ecart + Screen.height / 10), 
+			                   Screen.width / 12,
 			                   Screen.height / 10),
-			         "Heal Zone \n\n" +  nbHealZone);
+			         "Heal Zone \n\n" + nbHealZone);
 					
-					//Buttons
-					if(nbHealZone >= 1){ 
-				if(GUI.Button (new Rect (Screen.width / 8 + Screen.width / 30 ,
-				                         offsetY + 0*(ecart + Screen.height / 10), 
-				                         Screen.width /12,
+						//Buttons
+						if (nbHealZone >= 1) { 
+								if (GUI.Button (new Rect (Screen.width / 8 + Screen.width / 30,
+				                         offsetY + 0 * (ecart + Screen.height / 10), 
+				                         Screen.width / 12,
 				                         Screen.height / 10),
-						               "Vendre \n\n +100G"))
-						{
-							nbGoldLeft+=100;
-							nbHealZone--;
+						               "Vendre \n\n +100G")) {
+										nbGoldLeft += 100;
+										nbHealZone--;
+								}
 						}
-					}
 					
-					if(nbGoldLeft >= 100){
-				if(GUI.Button (new Rect (Screen.width / 8 + Screen.width / 30 + 2*Screen.width / 4,
-				                         offsetY + 0*(ecart + Screen.height / 10), 
-				                         Screen.width /12 ,
+						if (nbGoldLeft >= 100) {
+								if (GUI.Button (new Rect (Screen.width / 8 + Screen.width / 30 + 2 * Screen.width / 4,
+				                         offsetY + 0 * (ecart + Screen.height / 10), 
+				                         Screen.width / 12,
 				                         Screen.height / 10),
-						               "Acheter \n\n -100G"))
-						{
-							nbGoldLeft-=100;
-							nbHealZone++;
+						               "Acheter \n\n -100G")) {
+										nbGoldLeft -= 100;
+										nbHealZone++;
+								}
 						}
-					}
 					
-					/*********************DMG Buy************************/
-					/*													  */
-					/*													  */
-					/******************************************************/	
-					
+						/*********************DMG Buy************************/
+						/*													  */
+						/*													  */
+						/******************************************************/	
 					
 					
-			GUI.Box (new Rect (Screen.width / 8 + Screen.width / 30 + Screen.width / 4,
-			                   offsetY + 1*(ecart + Screen.height / 10), 
-			                   Screen.width /12,
+					
+						GUI.Box (new Rect (Screen.width / 8 + Screen.width / 30 + Screen.width / 4,
+			                   offsetY + 1 * (ecart + Screen.height / 10), 
+			                   Screen.width / 12,
 			                   Screen.height / 10),
-					         "Damage Zone \n\n" +nbDmgZone);
+					         "Damage Zone \n\n" + nbDmgZone);
 					
 					
-					//Buttons
-					if(nbDmgZone >= 1){
-						if(GUI.Button (new Rect (Screen.width / 8 + Screen.width / 30 ,
-				                         offsetY + 1*(ecart + Screen.height / 10), 
-				                         Screen.width /12,
+						//Buttons
+						if (nbDmgZone >= 1) {
+								if (GUI.Button (new Rect (Screen.width / 8 + Screen.width / 30,
+				                         offsetY + 1 * (ecart + Screen.height / 10), 
+				                         Screen.width / 12,
 				                         Screen.height / 10),
-						               "Vendre \n\n +100G"))
-						{
-							nbGoldLeft+=100;
-							nbDmgZone--;
+						               "Vendre \n\n +100G")) {
+										nbGoldLeft += 100;
+										nbDmgZone--;
+								}
 						}
-					}
 					
-					if(nbGoldLeft >= 100){
-				if(GUI.Button (new Rect (Screen.width / 8 + Screen.width / 30 + 2*Screen.width / 4,
-				                         offsetY + 1*(ecart + Screen.height / 10), 
-				                         Screen.width /12,
+						if (nbGoldLeft >= 100) {
+								if (GUI.Button (new Rect (Screen.width / 8 + Screen.width / 30 + 2 * Screen.width / 4,
+				                         offsetY + 1 * (ecart + Screen.height / 10), 
+				                         Screen.width / 12,
 				                         Screen.height / 10),
-						               "Acheter \n\n -100G"))
-						{
-							nbGoldLeft-=100;
-							nbDmgZone++;
+						               "Acheter \n\n -100G")) {
+										nbGoldLeft -= 100;
+										nbDmgZone++;
+								}
 						}
-					}
 					
-					/*********************AtkBuff Tree************************/
-					/*													  */
-					/*													  */
-					/******************************************************/	
+						/*********************AtkBuff Tree************************/
+						/*													  */
+						/*													  */
+						/******************************************************/	
 					
 					
-			GUI.Box (new Rect (Screen.width / 8 + Screen.width / 30 + Screen.width / 4,
-			                   offsetY + 2*(ecart + Screen.height / 10), 
-			                   Screen.width /12,
+						GUI.Box (new Rect (Screen.width / 8 + Screen.width / 30 + Screen.width / 4,
+			                   offsetY + 2 * (ecart + Screen.height / 10), 
+			                   Screen.width / 12,
 			                   Screen.height / 10),
-					         "Attack Buff Zone \n\n"+nbAtkBZone);
+					         "Attack Buff Zone \n\n" + nbAtkBZone);
 					
 					
 					
-					//buttons
-					if(nbAtkBZone >= 1){
-				if(GUI.Button (new Rect (Screen.width / 8 + Screen.width / 30,
-				                         offsetY + 2*(ecart + Screen.height / 10),  
-				                         Screen.width /12,
+						//buttons
+						if (nbAtkBZone >= 1) {
+								if (GUI.Button (new Rect (Screen.width / 8 + Screen.width / 30,
+				                         offsetY + 2 * (ecart + Screen.height / 10),  
+				                         Screen.width / 12,
 				                         Screen.height / 10),
-						               "Vendre \n\n +100G"))
-						{
-							nbGoldLeft+=100;
-							nbAtkBZone--;
+						               "Vendre \n\n +100G")) {
+										nbGoldLeft += 100;
+										nbAtkBZone--;
+								}
 						}
-					}
 					
-					if (nbGoldLeft >= 100) {
-				if(GUI.Button (new Rect (Screen.width / 8 + Screen.width / 30 + 2*Screen.width / 4,
-				                         offsetY + 2*(ecart + Screen.height / 10), 
-				                         Screen.width /12,
+						if (nbGoldLeft >= 100) {
+								if (GUI.Button (new Rect (Screen.width / 8 + Screen.width / 30 + 2 * Screen.width / 4,
+				                         offsetY + 2 * (ecart + Screen.height / 10), 
+				                         Screen.width / 12,
 				                         Screen.height / 10),
-						               "Acheter \n\n -100G"))
-						{
-							nbGoldLeft-=100;
-							nbAtkBZone++;
+						               "Acheter \n\n -100G")) {
+										nbGoldLeft -= 100;
+										nbAtkBZone++;
+								}
 						}
-					}
 					
-					/*********************Slow Tree************************/
-					/*													  */
-					/*													  */
-					/******************************************************/	
-					
+						/*********************Slow Tree************************/
+						/*													  */
+						/*													  */
+						/******************************************************/	
 					
 					
-			GUI.Box (new Rect (Screen.width / 8 + Screen.width / 30+Screen.width / 4,
-			                   offsetY + 3*(ecart + Screen.height / 10), 
-			                   Screen.width /12,
+					
+						GUI.Box (new Rect (Screen.width / 8 + Screen.width / 30 + Screen.width / 4,
+			                   offsetY + 3 * (ecart + Screen.height / 10), 
+			                   Screen.width / 12,
 			                   Screen.height / 10),
-					         "Slow Zone \n\n"+nbSlowZone);
+					         "Slow Zone \n\n" + nbSlowZone);
 					
 					
-					//buttons
-					if(nbSlowZone >= 1){
-				if(GUI.Button (new Rect (Screen.width / 8 + Screen.width / 30,
-				                         offsetY + 3*(ecart + Screen.height / 10), 
-				                         Screen.width /12,
+						//buttons
+						if (nbSlowZone >= 1) {
+								if (GUI.Button (new Rect (Screen.width / 8 + Screen.width / 30,
+				                         offsetY + 3 * (ecart + Screen.height / 10), 
+				                         Screen.width / 12,
 				                         Screen.height / 10),
-						               "Vendre \n\n +100G"))
-						{
-							nbGoldLeft+=100;
-							nbSlowZone--;
+						               "Vendre \n\n +100G")) {
+										nbGoldLeft += 100;
+										nbSlowZone--;
+								}
 						}
-					}
 					
-					if(nbGoldLeft >= 100){
-				if(GUI.Button (new Rect (Screen.width / 8 + Screen.width / 30+2*Screen.width / 4,
-				                         offsetY + 3*(ecart + Screen.height / 10), 
-				                         Screen.width /12,
+						if (nbGoldLeft >= 100) {
+								if (GUI.Button (new Rect (Screen.width / 8 + Screen.width / 30 + 2 * Screen.width / 4,
+				                         offsetY + 3 * (ecart + Screen.height / 10), 
+				                         Screen.width / 12,
 				                         Screen.height / 10),
-						               "Acheter \n\n -100G"))
-						{
-							nbGoldLeft-=100;
-							nbSlowZone++;
+						               "Acheter \n\n -100G")) {
+										nbGoldLeft -= 100;
+										nbSlowZone++;
+								}
 						}
-					}
 					
-					/*********************Quit Button**********************/
-					/*													  */
-					/*													  */
-					/******************************************************/	
-				if (GUI.Button (new Rect (Screen.width - Screen.width / 4 - Screen.width / 20,
-			                          Screen.height - Screen.height / 20- Screen.height / 20, 
+						/*********************Quit Button**********************/
+						/*													  */
+						/*													  */
+						/******************************************************/	
+						if (GUI.Button (new Rect (Screen.width - Screen.width / 4 - Screen.width / 20,
+			                          Screen.height - Screen.height / 20 - Screen.height / 20, 
 					                          Screen.width / 4,
-					                          Screen.height /20),
+					                          Screen.height / 20),
 					                "Start Playing")) {
-						//Application.Quit ();
-						isMenuBuy = false;
-					}
-		}//fin de OnGUI
+								//Application.Quit ();
+								isMenuBuy = false;
+						}
+				}//fin de OnGUI
 	
-	}
+		}
 
 }
